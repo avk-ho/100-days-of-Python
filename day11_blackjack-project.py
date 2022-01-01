@@ -61,7 +61,6 @@ def blackjack():
     def end_game(dict):
         # Checks whether the game continues or an end state is reached
         hand = dict["cards"]
-        #score = sum(hand)
 
         while True:
             score = dict["score"]
@@ -108,15 +107,13 @@ def blackjack():
             if player["score"] > 21:
                 print("Your score is above 21. You lose.")
                 return
-            elif dealer["score"] > 21:
-                print(f"This is the dealer's hand: {dealer['cards']}")
-                print("The dealer'score is above 21. You win.")
-                return
             elif player["blackjack"] and dealer["blackjack"]:
                 print(f"This is the dealer's hand: {dealer['cards']}")
                 print("It's a draw.")
                 return
             elif player["blackjack"]:
+                # Some clarifications may be needed, can the dealer try to get a blackjack as well ?
+                # if so, the code here should instead jump to the if player_stood part
                 print(f"This is the dealer's hand: {dealer['cards']}")
                 print("You win.")
                 return
@@ -131,6 +128,7 @@ def blackjack():
             draw_more_input = input(
                 "Type 'y' if you want to draw 1 more card, else type 'n' to stop with your current hand: ")
             if draw_more_input == "y":
+                # Will loop back to the beginning until an end state or the player chooses to stand
                 add_card(player, 1)
                 end_game(player)
                 input_check = False
@@ -140,6 +138,7 @@ def blackjack():
             else:
                 print("Wrong input.")
 
+        # Only active if the player decide to stand, passing the turn to the dealer
         if player_stood:
             while dealer["score"] < 17:
                 add_card(dealer, 1)
