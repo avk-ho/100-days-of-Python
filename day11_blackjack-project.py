@@ -25,7 +25,7 @@
 
 # If the player score is above 21, they lose ("bust")
 # If the score of the dealer is < 17, they must take another card
-# If at the end, the player and dealer have the same score, it's a draw
+# If in the end, the player and dealer have the same score, it's a draw
 # Ace is counted as 11 below 21, or 1 if the count ends up above 21
 
 # The player is given 2 cards
@@ -33,7 +33,6 @@
 # The player can ask to be given another card, or can stand (stop with their current score)
 # The dealer reveal their second card, if score < 17, they must take another card, hidden unless the player did stand
 # Repeat 2 previous phases
-# The game is ended if the dealer gets 21
 
 import random
 
@@ -51,8 +50,8 @@ def blackjack():
     def swap_ace(dict):
         # Swaps an Ace value of 11 to a 1 and updates the status of dict
         hand = dict["cards"]
-        ace_index = hand.index(11)
-        hand[ace_index] = 1
+        ace_index = hand.index(11) # After correction, not necessary, could be remplaced with a .remove(11)
+        hand[ace_index] = 1  # then an .append(1)
         score = sum(hand)
         dict["score"] = score
         if score == 21:
