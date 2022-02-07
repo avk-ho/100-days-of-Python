@@ -9,16 +9,14 @@ class Ball(Turtle):
         self.shape("circle")
         self.color("white")
         self.penup()
+
         self.acceleration = 0
-
-
         self.direction = var.BALL_STARTING_DIRECTION
-        # top_right_edge = self.towards(var.SCREEN_WIDTH/2, var.SCREEN_HEIGHT/2)
 
 
     def move(self):
         self.setheading(self.direction)
-        self.forward(10 + self.acceleration)
+        self.forward(var.BALL_STARTING_SPEED + self.acceleration)
 
     def bounce(self):
         self.direction = 360 - self.direction

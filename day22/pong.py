@@ -4,12 +4,6 @@
 
 # Pong game project
 
-# Notes
-# Player class with its score and its paddle sub class
-# Ball class
-
-# Solo attempt
-
 import time
 from turtle import Screen, Turtle
 from paddle import Paddle
@@ -53,7 +47,6 @@ while not game_over:
 
     # Detection if the ball leaves the left or right borders
     if ball.xcor() > var.SCREEN_WIDTH/2 - 10 or ball.xcor() < (var.SCREEN_WIDTH/2 - 10) * -1:
-        # print("RIP")
         x_coor = ball.xcor()
         ball.reset_position(x_coor)
         scoreboard.update_score(x_coor)

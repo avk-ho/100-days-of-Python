@@ -1,0 +1,19 @@
+SCREEN_WIDTH = 600
+SCREEN_HEIGHT = 600
+
+PLAYER_STARTING_POSITION = (0, -280)
+PLAYER_MOVE_DISTANCE = 10
+FINISH_LINE_Y = 280
+
+CARS_SPAWNING_Y_RANGE = {
+    "bottom_limit": (SCREEN_HEIGHT/2 - 50)*-1, 
+    "top_limit": (SCREEN_HEIGHT/2 - 50),
+}
+CARS_SPAWNING_RATE = 5 # the rate will be 1 / RATE
+
+CARS_COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
+CARS_STARTING_MOVE_DISTANCE = 5
+CARS_MOVE_INCREMENT = 2.5
+
+SCORE_FONT = ("Courier", 24, "normal")
+SCOREBOARD_POSITION = (-280, 250)
