@@ -21,8 +21,5 @@
     
 # Append
 # This adds the new text after the current content of the file
-with open("day24/my_file.txt", mode="a") as file:
-    file.write("New text.")
-
-
-# Mail merge project
+# with open("day24/my_file.txt", mode="a") as file:
+#     file.write("New text.")
