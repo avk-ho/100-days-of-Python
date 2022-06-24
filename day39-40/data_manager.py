@@ -2,12 +2,29 @@
 # doc https://sheety.co/docs/requests.html
 
 import requests
-SHEETY_API_ENDPOINT = "https://api.sheety.co/9909a027cda3ba53a56abf70da4bbc6b/flightDeals/prices"
+from flight_search import FlightSearch
+
+SHEETY_API_KEY = "API_KEY"
+SHEETY_API_ENDPOINT = f"https://api.sheety.co/{SHEETY_API_KEY}/flightDeals/prices"
 
 class DataManager:
     #This class is responsible for talking to the Google Sheet.
     def __init__(self):
         self.destination_data = {}
+
+    # def add_destination_data(self, city_name, lowest_price):
+    #     flight_search = FlightSearch()
+    #     iata_code = flight_search.get_destination_code(city_name)
+    #     params = {
+    #         "price": {
+    #             "city": city_name,
+    #             "iataCode": iata_code,
+    #             "lowestPrice": str(lowest_price)
+    #         }
+    #     }
+    #     response = requests.post(url=SHEETY_API_ENDPOINT, json=params)
+        
+
 
     def get_destination_data(self):
         response = requests.get(url=SHEETY_API_ENDPOINT)

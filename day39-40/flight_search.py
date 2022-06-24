@@ -54,22 +54,51 @@ class FlightSearch:
             headers=headers, 
             params=params
         )
-        data = response.json()["data"][0]
-        # print(data)
+        try:
+            data = response.json()["data"][0]
+            # print(data)
+            
+        except IndexError:
+            print(f"No flight for {destination_code}.")
+            params["max_stopovers"] = 1
+            response = requests.get(
+                url=search_endpoint,
+                headers=headers,
+                params=params
+            )
 
-        flight_data = FlightData(
-            price=data["price"],
-            origin_city=data["cityFrom"],
-            origin_airport=data["flyFrom"],
-            destination_city=data["cityTo"],
-            destination_airport=data["flyTo"],
-            out_date=data["utc_departure"].split("T")[0],
-            return_date=data["utc_arrival"].split("T")[0],
-        )
+            data = response.json()["data"][0]
+            # print(data)
 
-        # print(f"{flight_data.destination_city}: {flight_data.price}€")
-        return flight_data
+            flight_data = FlightData(
+                price=data["price"],
+                origin_city=data["cityFrom"],
+                origin_airport=data["flyFrom"],
+                destination_city=data["cityTo"],
+                destination_airport=data["flyTo"],
+                out_date=data["utc_departure"].split("T")[0],
+                return_date=data["utc_arrival"].split("T")[0],
+                stop_overs=1,
+                via_city=data["route"][0]["cityTo"]
+            )
+            
+            return flight_data
+
+        else:
+
+            flight_data = FlightData(
+                price=data["price"],
+                origin_city=data["cityFrom"],
+                origin_airport=data["flyFrom"],
+                destination_city=data["cityTo"],
+                destination_airport=data["flyTo"],
+                out_date=data["utc_departure"].split("T")[0],
+                return_date=data["utc_arrival"].split("T")[0],
+            )
+
+            # print(f"{flight_data.destination_city}: {flight_data.price}€")
+            return flight_data
 
 
-# fs = FlightSearch()
-# fs.search_flight("LON", "BER")
+fs = FlightSearch()
+fs.search_flight("LON", "BER")
