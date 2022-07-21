@@ -34,24 +34,24 @@ def make_emphasis(function):
 
     return wrapper_function
 
-# def logging_decorator(function):
-#     def wrapper(*args, **kwargs):
-#         function_name = function.__name__
-#         returned_value = function(*args)
+def logging_decorator(function):
+    def wrapper(*args, **kwargs):
+        function_name = function.__name__
+        returned_value = function(*args)
         
-#         log = f"You called the function {function_name}{args}.\n \
-#             It returned {returned_value}."
-#         print(log)
+        log = f"You called the function {function_name}{args}.\n \
+            It returned {returned_value}."
+        print(log)
 
-#         function(*args)
+        function(*args)
 
-#     return wrapper
+    return wrapper
 
-# @logging_decorator
-# def a_func(a, b, c):
-#     return a + b + c
+@logging_decorator
+def a_func(a, b, c):
+    return a + b + c
 
-# a_func(1, 2, 3)
+a_func(1, 2, 3)
 
 # Advanced decorator example
 # class User:
