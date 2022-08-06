@@ -87,7 +87,7 @@ def login():
 
                 return redirect(url_for("secrets", name=current_user.name))
 
-        error = "The email or password are wrong or do not exist. Please try again."
+        error = "The login are wrong or do not exist. Please try again."
 
     return render_template("login.html", error=error)
 

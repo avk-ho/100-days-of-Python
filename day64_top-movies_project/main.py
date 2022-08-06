@@ -7,7 +7,7 @@ from wtforms import StringField, SubmitField, IntegerField, FloatField
 from wtforms.validators import DataRequired
 import requests
 
-TMBD_API_KEY = "API KEY GOES HERE"
+TMBD_API_KEY = "7072df79ae6bc0a00c18593ec2442ab7"
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
