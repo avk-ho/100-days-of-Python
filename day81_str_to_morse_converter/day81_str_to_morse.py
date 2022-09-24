@@ -68,6 +68,7 @@ def format_input(str):
 
     return formatted_input
 
+
 # Take a string and convert it into morse code
 # Will leave unrecognized characters as is
 def convert_to_morse(str):
@@ -80,7 +81,7 @@ def convert_to_morse(str):
         converted_str.append(char)
         converted_str.append("   ") # 3 units space
 
-    converted_str = "".join(converted_str).rstrip() # convert list into str, remove trailing whitespace
+    converted_str = "".join(converted_str).rstrip()
 
     return converted_str
 
